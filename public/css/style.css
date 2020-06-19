@@ -1,0 +1,294 @@
+html, body {
+	margin: 0;
+    height: 100%;
+    overflow: hidden;
+}
+
+::-webkit-scrollbar {
+	display: none;
+}
+
+.inbox_people {
+	background: #f8f8f8 none repeat scroll 0 0;
+	float: left;
+	width: 25%;
+	border-right: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.mesgs {
+	float: left;
+}
+
+.noleft {
+	margin-left: 0;
+}
+
+.composing {
+	height: 55.25px;
+	padding: 0 !important;
+	background-size: cover;
+}
+
+.recipients {
+	overflow-y: hidden;
+	padding-left: 10px;
+	padding-right: 10px;
+	border: none;
+}
+
+.composeButton {
+	height: 55.25px;
+}
+
+.chevronButton {
+	height: 55.25px;
+	width: 55.25px;
+	z-index: 1;
+}
+
+.awesomplete {
+	-ms-flex: 1 1 auto!important;
+    flex: 1 1 auto!important;
+    width: 100%;
+}
+
+#awesomplete_list_1 {
+	width: 100% !important;
+}
+
+span[role="status"] {
+	width: 100% !important;
+}
+
+.awesomplete mark {
+	background: transparent !important;
+}
+
+.addRecipButton {
+	width: 40px;
+	height: 54.25px;
+}
+
+.recent_heading {
+	overflow: hidden;
+	border-bottom: 1px solid #8E8E93;
+	height: 54.25px;
+}
+
+.inbox_chat {
+	overflow-y: scroll;
+	margin-right: 0;
+	flex: 1;
+}
+
+.chat_list {
+	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+	margin: 0;
+	padding: 18px 16px 10px;
+	max-height: 112px;
+	overflow: hidden;
+	cursor: pointer;
+}
+
+.active_chat {
+	background: #ebebeb;
+}
+
+.chat_ib h5 {
+	font-size: 15px;
+	display: flex;
+	width: 100%;
+	color: #464646;
+	margin: 0 0 8px 0;
+	font-weight: bold;
+	white-space: nowrap;
+}
+
+.chat_ib h5 span {
+	overflow-x: hidden;
+	text-overflow: ellipsis;
+}
+
+.chat_ib h5 .chat_date {
+	font-size: 13px;
+	text-align: right;
+	font-weight: lighter;
+	width: initial !important;
+	overflow-x: initial !important;
+	text-overflow: initial !important;
+}
+
+.chat_ib p {
+	font-size: 14px;
+	color: #989898;
+	margin: auto;
+}
+
+.chat_ib {
+	float: left;
+	padding: 0 0 0 15px;
+}
+
+.inline_image {
+	width: 100%;
+	height: 100%;
+}
+
+.time_date {
+	color: #747474;
+	display: block;
+	font-size: 12px;
+	margin: 3px 0 0;
+}
+
+.inline_date p {
+	text-align: center;
+	color: #8E8E93;
+	margin: 2rem 0 2rem;
+}
+
+.logged_msg {
+	overflow: hidden;
+	margin-bottom: 10px;
+}
+
+.received_msg {
+	float: left;
+	max-width: 70%;
+}
+
+.received_msg img {
+	border-radius: 0.5rem 0.5rem 0.5rem 0;
+}
+
+.received_msg p a {
+	color: #646464;
+	text-decoration: underline;
+}
+
+.received_msg p {
+	background: #ebebeb none repeat scroll 0 0;
+	border-radius: 0.5rem 0.5rem 0.5rem 0;
+	font-size: 14px;
+	margin: 0;
+	color: #646464;
+	padding: 10px;
+	width: 100%;
+}
+
+.sent_msg {
+	float: right;
+	max-width: 70%;
+}
+
+.sent_msg img {
+	border-radius: 0.5rem 0.5rem 0rem 0.5rem;
+}
+
+.sent_msg p a {
+	color: #fff;
+	text-decoration: underline;
+}
+
+.sent_msg p {
+	background: var(--primaryColor) none repeat scroll 0 0;
+	border-radius: 0.5rem 0.5rem 0 0.5rem;
+	font-size: 14px;
+	margin: 0;
+	color: #fff;
+	padding: 10px;
+	width: 100%;
+}
+
+.sent_msg span {
+	text-align: right;
+}
+
+.reaction_outgoing {
+	float: right;
+	margin-right: 4px;
+	font-size: 16px;
+}
+
+.reaction_incoming {
+	float: left;
+	margin-left: 4px;
+	font-size: 16px;
+}
+
+.msg_history {
+	overflow-y: auto;
+	padding: 20px 10px 0 10px;
+	background-size: cover;
+}
+
+.type_msg {
+	border-top: 1px solid rgba(0, 0, 0, 0.1);
+	position: relative;
+	margin: 0;
+}
+
+.write_msg {
+	padding: 10px 10px 0 10px;
+}
+
+textarea {
+	background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+	border: medium none;
+	color: #4c4c4c;
+	font-size: 15px;
+	min-height: 58px;
+	width: 100%;
+	resize: none;
+}
+
+.clickable {
+	cursor: pointer;
+}
+
+.tr {
+	margin-bottom: 5px;
+}
+
+.image {
+	padding-bottom: 4px;
+}
+
+.msg_send_btn {
+	background: var(--primaryColor) none repeat scroll 0 0;
+	border: medium none;
+	color: #fff;
+	cursor: pointer;
+	font-size: 17px;
+	height: 80px;
+	width: 40px;
+}
+
+.menu {
+	box-shadow: 0 4px 5px 3px rgba(0, 0, 0, 0.2);
+	position: absolute;
+	display: none;
+	background-color: #fff;
+	z-index: 10;
+}
+
+.menu-options {
+	list-style: none;
+	padding: 10px 0;
+	margin-bottom: 0;
+}
+
+.menu-option {
+	font-weight: 500;
+	font-size: 14px;
+	padding: 10px 40px 10px 20px;
+	cursor: pointer;
+}
+
+.menu-option:hover {
+	background: rgba(0, 0, 0, 0.2);
+}
+
+.react:hover {
+	text-decoration: none;
+}

@@ -1,0 +1,19 @@
+.subheader::before {
+	content: '... ';
+	color: #fff;
+}
+
+.subheader {
+	font-size: 1.5em;
+}
+
+.header {
+	margin-bottom: 0.3rem;
+	margin-top: 1.3rem;
+}
+
+.info {
+	height: 75%;
+	width: auto;
+	margin-top: 0;
+}

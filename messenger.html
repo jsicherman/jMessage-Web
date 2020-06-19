@@ -1,0 +1,149 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>jMessage | Web</title>
+
+	<meta property="og:image" content="public/img/icons/android-chrome-512x512.png" />
+	<meta property="og:description" content="Your favourite messenger for your favourite device. iMessage anywhere." />
+	<meta property="og:url" content="https://web.jmessage.app" />
+	
+	<link rel="apple-touch-icon" sizes="180x180" href="public/img/icons/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="public/img/icons/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="public/img/icons/favicon-16x16.png">
+	<link rel="manifest" href="public/img/icons/site.webmanifest">
+	<link rel="mask-icon" href="public/img/icons/safari-pinned-tab.svg" color="#0076ff">
+	<link rel="shortcut icon" href="public/img/icons/favicon.ico">
+	<meta name="apple-mobile-web-app-title" content="jMessage">
+	<meta name="application-name" content="jMessage">
+	<meta name="msapplication-TileColor" content="#0076ff">
+	<meta name="msapplication-config" content="public/img/icons/browserconfig.xml">
+	<meta name="theme-color" content="#ffffff">
+
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Raleway:200,100,400" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="public/css/font-awesome-animation.min.css">
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" id="bootstrap-css">
+
+	<link rel="stylesheet" type="text/css" href="public/css/style.css">
+	<link rel="stylesheet" type="text/css" href="public/css/home.css">
+	<link rel="stylesheet" type="text/css" href="public/css/switches.css">
+	<link rel="stylesheet" href="public/css/awesomplete.css">
+</head>
+
+<body>
+<div id="body-wrapper">
+	<div class="container-fluid h-100 flex-fill" style="padding-left: 0; padding-right: 0">
+		<div class="d-flex flex-row h-100 w-100">
+			<div class="inbox_people h-100 d-flex flex-column">
+				<div class="d-flex flex-row w-100">
+					<button class="chevronButton btn btn-primary" type="button" data-toggle="dropdown"><i class="fas fa-bars"></i></button>
+					<div class="dropdown-menu">
+						<a class="dropdown-item" href="" data-toggle="modal" data-target="#settingsModal"><i class="fas fa-cog"></i> Settings</a>
+						<div class="dropdown-divider"></div> 
+						<a class="dropdown-item" href="" onclick="utilities.logout();"><i class="fas fa-sign-out-alt"></i> Logout</a>
+					</div>
+					<button class="composeButton btn btn-primary flex-fill" onclick="messenger.composeMessage();"><i class="far fa-edit"></i></button>
+					<button id="chevvy" class="chevronButton btn btn-primary" onclick="utilities.toggleChevron();"><i class="fas fa-chevron-left"></i></button>
+				</div>
+				<div class="inbox_chat row"></div>
+			</div>
+			<div class="mesgs h-100 d-flex flex-column w-100">
+				<div class="msg_history h-100" onscroll="messenger.scrollMessages();"></div>
+				<div class="msg_compose w-100 h-100 d-flex flex-column" style="display: none !important">
+					<div class="d-flex flex-row w-100 flex-fill composing">
+						<input class="recipients w-100 recent_heading" onkeyup="messenger.loadRecipients(this, event);" type="text" placeholder="Recipients" data-multiple></input>
+						<button class="addRecipButton btn btn-primary" tabindex="-1" type="button" onclick="messenger.addRecipient();"><i class="fas fa-user-plus"></i></button>
+					</div>
+				</div>
+				<div class="type_msg row">
+					<textarea spellcheck="true" onkeypress="messenger.typing(event);" id="msg_input" type="text" class="write_msg col" placeholder="Type a message..." autofocus></textarea>
+					<button onclick="messenger.sendMessage();" class="msg_send_btn" type="button"><i class="fab fa-telegram-plane"></i></button>
+				</div>
+			</div>
+			<div class="modal" id="reactModal" tabindex="-1" role="dialog" aria-hidden="true">
+				<div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title">React</h5>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<div class="container-fluid row w-100">
+								<div class="col-2"><a class="react" onclick="return messenger.react(0);" href="">❤️</a></div>
+								<div class="col-2"><a class="react" onclick="return messenger.react(1);" href="">👍</a></div>
+								<div class="col-2"><a class="react" onclick="return messenger.react(2);" href="">👎</a></div>
+								<div class="col-2"><a class="react" onclick="return messenger.react(3);" href="">😄</a></div>
+								<div class="col-2"><a class="react" onclick="return messenger.react(4);" href="">❗</a></div>
+								<div class="col-2"><a class="react" onclick="return messenger.react(5);" href="">❓</a></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal" id="settingsModal" tabindex="-1" role="dialog" aria-hidden="true">
+				<div class="modal-dialog modal-dialog-centered" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title">Settings</h5>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<div class="container-fluid w-100">
+								<div class="row">
+									<div class="col-4">Notifications</div>
+									<div class="col-8"><label class="switch"><input type="checkbox" onclick="configuration.toggleNotifications(this);" id="notifBox"><span class="slider round"></span></label></div>
+								</div>
+								<div class="row">
+									<div class="col-4">Sounds</div>
+									<div class="col-8"><label class="switch"><input type="checkbox" onclick="configuration.toggleSounds(this);" id="soundBox"><span class="slider round"></span></label></div>
+								</div>
+								<hr>
+								<div class="row">
+									<div class="col-4" style="align-self: center;">Colors</div>
+									<div class="col-8">
+										<div class="row">
+											<div class="col-2 btnRow"><button type="button" onclick="configuration.setColor(this, true);" class="btn colorControl tr btn-circle btn-primary" id="#0076FF"></button></div>
+											<div class="col-2 btnRow"><button type="button" onclick="configuration.setColor(this, true);" class="btn colorControl tr btn-circle btn-primary" id="#F0932B"></button></div>
+											<div class="col-2 btnRow"><button type="button" onclick="configuration.setColor(this, true);" class="btn colorControl tr btn-circle btn-primary" id="#E056FD"></button></div>
+											<div class="col-2 btnRow"><button type="button" onclick="configuration.setColor(this, true);" class="btn colorControl tr btn-circle btn-primary" id="#6C5CE7"></button></div>
+											<div class="col-2 btnRow"><button type="button" onclick="configuration.setColor(this, true);" class="btn colorControl tr btn-circle btn-primary" id="#636E72"></button></div>
+											<div class="col-2 btnRow"><button type="button" onclick="configuration.setColor(this, true);" class="btn colorControl tr btn-circle btn-primary" id="#2ECC71"></button></div>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-4" style="align-self: center;">Background</div>
+									<div class="col-8">
+										<div class="row">
+											<div class="col-2 btnRow"><button type="button" onclick="configuration.setBg(this);" class="btn bgControl btn-circle btn-primary" id="white"></button></div>
+											<div class="col-2 btnRow"><button type="button" onclick="configuration.setBg(this);" class="btn bgControl btn-circle btn-primary" id="envelope"></button></div>
+											<div class="col-2 btnRow"><button type="button" onclick="configuration.setBg(this);" class="btn bgControl btn-circle btn-primary" id="cow"></button></div>
+											<div class="col-2 btnRow"><button type="button" onclick="configuration.setBg(this);" class="btn bgControl btn-circle btn-primary" id="spectrum"></button></div>
+											<div class="col-2 btnRow"><button type="button" onclick="configuration.setBg(this);" class="btn bgControl btn-circle btn-primary" id="vortex"></button></div>
+											<div class="col-2 btnRow"><button type="button" onclick="configuration.setBg(this);" class="btn bgControl btn-circle btn-primary" id="mountains"></button></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="menu">
+				<ul class="menu-options">
+					<li class="menu-option" dataFor="conv">Delete Thread</li>
+					<li class="menu-option" dataFor="mesg">React</li>
+					<li class="menu-option" dataFor="mesg">Copy</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>
